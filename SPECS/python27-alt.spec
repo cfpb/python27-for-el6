@@ -184,6 +184,7 @@ done
 %{bindir}/easy_install-2.7
 %{bindir}/virtualenv
 %{bindir}/virtualenv-3.4
+%{bindir}/wheel
 
 # Man files
 %{prefix}/share/man/*/*
