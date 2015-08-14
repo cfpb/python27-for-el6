@@ -129,11 +129,10 @@ rm %{buildroot}%{prefix}/bin/smtpd.py~
 # --no-check-certificate must be used because of old verison
 # of wget
 wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
-mkdir -p %{_topdir}/BUILD/pip
 LD_LIBRARY_PATH=%{buildroot}%{prefix}/lib %{buildroot}%{bindir}/python2.7 get-pip.py
 # Now virtualenv
-mkdir -p %{_topdir}/BUILD/virtualenv
 LD_LIBRARY_PATH=%{buildroot}%{prefix}/lib %{buildroot}%{bindir}/pip2.7 install virtualenv
+mv %{buildroot}%{prefix}/bin/virtualenv-3.4 %{buildroot}%{prefix}/bin/virtualenv-2.7
 
 # Fix paths in shebangs
 FILES=%{buildroot}%{bindir}/*
@@ -183,7 +182,7 @@ done
 %{bindir}/easy_install
 %{bindir}/easy_install-2.7
 %{bindir}/virtualenv
-%{bindir}/virtualenv-3.4
+%{bindir}/virtualenv-2.7
 %{bindir}/wheel
 
 # Man files
