@@ -132,7 +132,7 @@ wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
 LD_LIBRARY_PATH=%{buildroot}%{prefix}/lib %{buildroot}%{bindir}/python2.7 get-pip.py
 # Now virtualenv
 LD_LIBRARY_PATH=%{buildroot}%{prefix}/lib %{buildroot}%{bindir}/pip2.7 install virtualenv
-mv %{buildroot}%{prefix}/bin/virtualenv-3.4 %{buildroot}%{prefix}/bin/virtualenv-2.7
+mv %{buildroot}%{prefix}/bin/virtualenv-3.5 %{buildroot}%{prefix}/bin/virtualenv-2.7
 
 # Fix paths in shebangs
 FILES=%{buildroot}%{bindir}/*
