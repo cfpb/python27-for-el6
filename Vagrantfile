@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
+  
   config.vm.box = "bento/centos-6.7"
   config.vm.provision :shell,
     path: "bootstrap.sh",
