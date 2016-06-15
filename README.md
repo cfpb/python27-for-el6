@@ -1,6 +1,10 @@
 # Python 2.7 RPM built for RHEL 6.5
 
-**Description**:  RHEL 6.5 comes with Python 2.6 installed.  This project contains a SPEC file for building an RPM that compiles Python 2.7 and installs pip and virtualenv.
+**Description**:  
+
+    RHEL 6.5 comes with Python 2.6 installed.  This project contains a SPEC file for building an RPM that compiles Python 2.7 and installs pip and virtualenv.
+    Note that it improves upon the 2.7.6 rpm that was previously available.
+    
 
 ## Dependencies
 
@@ -23,7 +27,7 @@ via the boostrap.sh script.
 
 ### Install the RPM
 
-Install the built RPM by running "sudo yum install RPMS/x86_64/python27-2.7.6-1.el6.x86_64.rpm"
+Install the built RPM by running "sudo yum install RPMS/x86_64/python27-2.7.11-1.el6.x86_64.rpm"
 
 ## Configuration
 
@@ -33,7 +37,7 @@ Edit the SPEC file to make changes to the build configuration.
 
 1. Run /usr/local/bin/virtualenv ~/.virtualenvs/{ your_venv }
 2. Activate using "source ~/.virtualenvs/{ your_venv }/bin/activate"
-3. python -V should return 2.7.6
+3. python -V should return 2.7.11
 4. Install packages using pip, and code!
 
 ## Known issues
