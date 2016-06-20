@@ -3,7 +3,7 @@
 ############################
 %global __python_ver 27
 %global pybasever 2.7
-%global pyver 2.7.11
+%global pyver 2.7.6
 %global python python%{__python_ver}
 %global __python %{python}
 
@@ -25,9 +25,9 @@ Group: Development/Languages
 License: Python
 URL: http://www.python.org/
 Source: https://www.python.org/ftp/python/%{version}/Python-%{version}.tar.xz
-Obsoletes: python27 <= 2.7.11
-Provides: python27 = 2.7.11
-Provides: python(abi) = 2.7.11
+Obsoletes: python27 <= 2.7.6
+Provides: python27 = 2.7.6
+Provides: python(abi) = 2.7.6
 
 %description
 Python is an interpreted, interactive, object-oriented programming
