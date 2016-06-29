@@ -123,8 +123,8 @@ mkdir -p %{buildroot}%{prefix}/lib/python%{pybasever}/lib-dynload
 
 # The -i option ignores all errors in recipes executed to remake files.
 # run this if you have previous python installs impeding your rpm build progress.
-#make -i altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
-make altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+make -i altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+#make altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
 
 # Hack to remove a stray file that should not have been generated.
 rm %{buildroot}%{prefix}/bin/smtpd.py~

@@ -42,11 +42,8 @@ Edit the SPEC file to make changes to the build configuration.
 
 ## Known issues
 
-- Currently, a number of compilation errors are displayed while the RPM is being
-built.  This is related to the rpmbuild process itself attempting to binary
-compile various Python 2.7 packages using the system Python (2.6).  So far,
-this has not had any affect on the usability of the Python install.
-
+    Build process kept failing at the install section: the work-around to that was adding the -i option to the make command as seen in the spec file
+    Also, be sure to remove any the previous python installs that you have on your system as this might have conflicts with the new build that you are making.
 ## Getting help
 
 If you have questions, concerns, bug reports, etc, please file an issue in this repository's Issue Tracker.
