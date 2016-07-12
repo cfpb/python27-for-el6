@@ -3,7 +3,7 @@
 ############################
 %global __python_ver 27
 %global pybasever 2.7
-%global pyver 2.7.6
+%global pyver 2.7.11
 %global python python%{__python_ver}
 %global __python %{python}
 
@@ -19,15 +19,15 @@
 ###############
 Name: %{python}
 Version: %{pyver}
-Release: 2%{?dist}
+Release: 1%{?dist}
 Summary: An interpreted, interacive, object-oriented programming language
 Group: Development/Languages
 License: Python
 URL: http://www.python.org/
 Source: https://www.python.org/ftp/python/%{version}/Python-%{version}.tar.xz
-Obsoletes: python27 <= 2.7.6
-Provides: python27 = 2.7.6
-Provides: python(abi) = 2.7.6
+Obsoletes: python27 <= 2.7.11
+Provides: python27 = 2.7.11
+Provides: python(abi) = 2.7.11
 
 %description
 Python is an interpreted, interactive, object-oriented programming
@@ -85,9 +85,9 @@ topdir=$(pwd)
 # Lastly, since the lib is also installed in /usr/local, tell the
 # compiler where it is.
 ./configure --prefix=%{prefix} \
-			--enable-unicode=ucs4 \
-			--enable-shared \
-			LDFLAGS="-Wl,--rpath=/usr/local/lib"
+            --enable-unicode=ucs4 \
+            --enable-shared \
+            LDFLAGS="-Wl,--rpath=/usr/local/lib"
 
 # First build python
 make -s %{?_smp_flags}
@@ -120,7 +120,14 @@ echo 'install_dir='"%{buildroot}%{bindir}" >> setup.cfg
 # Create lib-dynload directory, then altinstall into %{buildroot} at
 # the ${prefix} (e.g., /usr/local)
 mkdir -p %{buildroot}%{prefix}/lib/python%{pybasever}/lib-dynload
+
 make altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+
+
+# run the below make command with the -i option if you have previous python installs impeding your rpm build progress.
+# The -i option ignores all errors in recipes executed to remake files.
+# make -i altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+
 
 # Hack to remove a stray file that should not have been generated.
 rm %{buildroot}%{prefix}/bin/smtpd.py~
@@ -143,14 +150,14 @@ fi
 FILES=%{buildroot}%{bindir}/*
 for f in $FILES
 do
-	sed -i 's|'%{buildroot}'||g' $f
+    sed -i 's|'%{buildroot}'||g' $f
 done
 
 FOLDERS=%{buildroot}%{prefix}/lib/python%{pybasever}/site-packages/*.dist-info
 
 for f in $FOLDERS
 do
-	sed -i 's|'%{buildroot}'||g' $f/RECORD
+    sed -i 's|'%{buildroot}'||g' $f/RECORD
 done
 
 ###########################################################
