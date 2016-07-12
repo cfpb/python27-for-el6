@@ -19,7 +19,7 @@
 ###############
 Name: %{python}
 Version: %{pyver}
-Release: 2%{?dist}
+Release: 1%{?dist}
 Summary: An interpreted, interacive, object-oriented programming language
 Group: Development/Languages
 License: Python
@@ -121,10 +121,13 @@ echo 'install_dir='"%{buildroot}%{bindir}" >> setup.cfg
 # the ${prefix} (e.g., /usr/local)
 mkdir -p %{buildroot}%{prefix}/lib/python%{pybasever}/lib-dynload
 
+make altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+
+
+# run the below make command with the -i option if you have previous python installs impeding your rpm build progress.
 # The -i option ignores all errors in recipes executed to remake files.
-# run this if you have previous python installs impeding your rpm build progress.
-make -i altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
-#make altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+# make -i altinstall DESTDIR=%{buildroot} PREFIX=%{prefix}
+
 
 # Hack to remove a stray file that should not have been generated.
 rm %{buildroot}%{prefix}/bin/smtpd.py~
